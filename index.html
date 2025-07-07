@@ -133,7 +133,7 @@
 
     <div class="informacion_contacto">
       <div class="contacto_logo">
-        <img src="/resources/logo.png" alt="Logo en footer">
+        <img src="logo.png" alt="Logo en footer">
       </div>
         <h3>Información de contacto</h3>
         <ul>
@@ -269,6 +269,23 @@
 
   // Mostrar logo en contacto y ocultar header al llegar abajo
 
+      const contacto = document.querySelector('.informacion_contacto');
+  const logoFooter = document.querySelector('.contacto_logo');
+
+  const observerContacto = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        galleryHeader.classList.remove('visible');
+        galleryHeader.classList.add('retract');
+      } else {
+        galleryHeader.classList.add('visible');
+        galleryHeader.classList.remove('retract');
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.5
+  });
 
   observerContacto.observe(contacto);
 </script>
