@@ -384,29 +384,31 @@ body {
     line-height: 2;
 }
 
-.informacion_contacto {
+..informacion_contacto {
     font-family: 'Inter';
     font-size: 15px;
-    padding-top: 30px;
-    padding-bottom: 80px;
-    margin-top: 5px;
-    margin-left: 100px;
+    padding: 30px 80px;
     line-height: 1.8;
+    
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
+
 .informacion_contacto ul {
     list-style-type: none;
-    
+    padding-left: 0;
 }
 
 .contacto_logo {
-  display: flex;
-  margin-bottom: 0px;
+  flex-shrink: 0; /* para que no se reduzca */
 }
 
 .contacto_logo img {
   width: 150px;
   height: auto;
 }
+
 
 
 
