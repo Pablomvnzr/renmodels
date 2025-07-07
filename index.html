@@ -14,13 +14,17 @@
     <section class="hero">
         <div class="hero_inner">
             <div class="hero_logo">
-                <img src="logo.png" alt="Logo de Cristobal Carrasco">
+                <img src="/resources/logo.png" alt="Logo de Cristobal Carrasco">
             </div>
 
             <div class="divider"></div>
 
             <div class="hero_content">
-                <p>Transformamos tus ideas en imágenes realistas. A través de modelos 3D y renders de alta calidad, te ayudamos a visualizar cómo lucirá tu vivienda antes de construirla. Ya sea un diseño desde cero o una mejora a una construcción existente, podrás ver cada espacio con detalle y tomar decisiones con mayor confianza.</p>
+                <p>Transformamos tus ideas en imágenes realistas.
+                   A través de modelos 3D y renders de alta calidad, 
+                   te ayudamos a visualizar cómo lucirá tu vivienda antes de construirla. 
+                   Ya sea un diseño desde cero o una mejora a una construcción existente, 
+                   podrás ver cada espacio con detalle y tomar decisiones con mayor confianza.</p>
             </div>
         </div>
 
@@ -31,7 +35,7 @@
     
     <div class="gallery_header" id="galleryHeader">
         <div class="gallery_logo">
-            <img src="logo.png" alt="Logo pequeño" />
+            <img src="/resources/logo.png" alt="Logo pequeño" />
         </div>
         <div class="gallery_divider"></div>
     </div>
@@ -43,11 +47,11 @@
             <h3>Nuestras especialidades</h3>
 
             <ul>
-                <li>Diseño conceptual de producto</li>
-                <li>Modelado 3D y renderizado</li>
-                <li>Diseños personalizados</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipiscing elit</li>
+                <li>Modelado 3D arquitectónico</li>
+                <li>Renderizado fotorrealista</li>
+                <li>Visualización exterior de viviendas</li>
+                <li>Animaciones y recorridos virtuales</li>
+                <li>Modelado a partir de planos o ideas iniciales</li>
             </ul>
         </div>
 
@@ -67,16 +71,16 @@
                 <!-- botones -->
                 <!-- slide images start-->
                  <div class="slide first">
-                    <img src="test_image.png" alt="Imagen 1"> 
+                    <img src="/resources/test_image.png" alt="Imagen 1"> 
                 </div>
                 <div class="slide">
-                    <img src="imagen2.jpg" alt="Imagen 2">
+                    <img src="/resources/imagen2.jpg" alt="Imagen 2">
                 </div>
                 <div class="slide">
-                    <img src="imagen3.jpg" alt="Imagen 3">
+                    <img src="/resources/imagen3.jpg" alt="Imagen 3">
                 </div>
                 <div class="slide">
-                    <img src="imagen4.jpg" alt="Imagen 4">
+                    <img src="/resources/imagen4.jpg" alt="Imagen 4">
                 </div>
 
                 <!-- slide images end-->
@@ -106,7 +110,7 @@
     <!-- Botón flotante de WhatsApp -->
      <div class="whatsapp_box" id="whatsappBox">
         <a href="javascript:void(0)" id="whatsappToggle">
-            <img src="whatsapp.png" alt="Icono de WhatsApp">
+            <img src="/resources/whatsapp.png" alt="Icono de WhatsApp">
             <span>Contáctanos</span>
         </a>
     </div>
@@ -128,6 +132,9 @@
     </div>
 
     <div class="informacion_contacto">
+      <div class="contacto_logo">
+        <img src="/resources/logo.png" alt="Logo en footer">
+      </div>
         <h3>Información de contacto</h3>
         <ul>
             <li>Teléfono: +56 9 5752 2676</li>
@@ -221,18 +228,15 @@
 
   observerWhatsapp.observe(galleryBox);
 
-
-
-   const subjectTextarea = document.getElementById('subject');
-
+  // Expande textarea dinámicamente
+  const subjectTextarea = document.getElementById('subject');
   subjectTextarea.addEventListener('input', function () {
-    this.style.height = 'auto'; // Reinicia la altura
-    this.style.height = (this.scrollHeight) + 'px'; // Ajusta al contenido
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight) + 'px';
   });
-  
-  
-  const contactForm = document.getElementById('whatsappContactForm');
 
+  // Enviar a WhatsApp con los datos del formulario
+  const contactForm = document.getElementById('whatsappContactForm');
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -243,34 +247,32 @@
     const mensaje = `Hola, soy ${name}. Mi correo es ${email}. Me gustaría saber sobre: ${subject}.`;
     const url = `https://wa.me/56957522676?text=${encodeURIComponent(mensaje)}`;
 
-    window.open(url, '_blank'); // Abre WhatsApp en una nueva pestaña
+    window.open(url, '_blank');
   });
 
-    // Slider automático
-    var counter = 1;
-    setInterval(function() {
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if (counter > 4) {
-            counter = 1;
-        }
-    }, 5000); // Cambia cada 5 segundos
+  // Slider automático
+  let counter = 1;
+  setInterval(function () {
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if (counter > 4) counter = 1;
+  }, 5000);
+
+  // Detectar si es móvil y activar animación hero tras 4 segundos
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    setTimeout(() => {
+      const heroInner = document.querySelector('.hero_inner');
+      heroInner.classList.add('mobile-active');
+    }, 4000);
+  }
+
+  // Mostrar logo en contacto y ocultar header al llegar abajo
 
 
-
-    // Detecta si es móvil
-const isMobile = window.innerWidth < 768;
-
-// Si es móvil, activa animación después de 4 segundos
-if (isMobile) {
-  setTimeout(() => {
-    const heroInner = document.querySelector('.hero_inner');
-    heroInner.classList.add('mobile-active');
-  }, 4000);
-}
-
-
+  observerContacto.observe(contacto);
 </script>
+
 
 
 </body>
