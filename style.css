@@ -1,0 +1,448 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter';font-size: 22px;
+  background-color: #f8f1e4;
+  color: #3e2f1c;
+  scroll-behavior: smooth;
+}
+
+/* HERO base */
+.hero {
+  height: 100vh;
+  background-color: #e3d5c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero_inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease;
+  max-width: 1000px;
+  width: 100%;
+  padding: 40px;
+  position: relative;
+}
+
+/* Logo centrado, efecto solo se activa en hover al logo */
+.hero_logo {
+  transition: all 0.6s ease;
+  z-index: 2;
+}
+
+.hero_logo img {
+  width: 350px;
+  transition: transform 0.6s ease;
+  display: block;
+  margin: 20% 20%;
+  margin-left: 70%;
+}
+
+/* Divider */
+.divider {
+  width: 0;
+  height: 120px;
+  background-color: #6b4f3b;
+  margin: 0;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+/* Texto oculto inicialmente */
+.hero_content {
+  opacity: 0;
+  max-width: 500px;
+  padding-left: 0;
+  font-size: 1.1rem;
+  transition: all 0.6s ease;
+}
+
+.hero_inner:hover .hero_logo img {
+  transform: translateX(-50%);
+}
+
+.hero_inner:hover .divider {
+  width: 10px;
+  margin: 10%;
+  opacity: 1;
+}
+
+.hero_inner:hover .hero_content {
+  opacity: 1;
+  padding-left: 0px;
+}
+
+
+.hero_arrow {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font-size: 2rem;
+  color: #6b4f3b;
+  transition: color 0.3s ease;
+}
+
+.hero_arrow:hover {
+  color: #4a3423;
+}
+
+
+
+/* Cabecera fija que aparece desde arriba */
+.gallery_header {
+  position: fixed;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  background-color: #f8f1e4;
+  z-index: 1000;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: top 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+/* Cuando aparece */
+.gallery_header.visible {
+  top: 0;
+  opacity: 1;
+}
+
+/* Cuando se retrae (mismo efecto hacia arriba) */
+.gallery_header.retract {
+  top: -100px;
+  opacity: 0;
+}
+
+
+/* Logo más visible */
+.gallery_logo img {
+  width: 160px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Línea horizontal completa */
+.gallery_divider {
+  width: 100vw;
+  height: 2px;
+  background-color: #6b4f3b;
+  margin-top: 4px;
+}
+
+.whatsapp_box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.whatsapp_box a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp_box a.animate {
+  animation: press-bounce 0.25s ease;
+}
+
+
+.whatsapp_box a:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsapp_box img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Formulario de WhatsApp */
+
+.whatsapp_form {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.whatsapp_form.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+.whatsapp_form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.whatsapp_form button {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp_form button:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsapp_form label {
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+@keyframes press-bounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
+.whatsapp_box.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.whatsapp_box {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* TESTING AREA */
+
+.gallery_content {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    width: 800px;
+    height: 490px;
+    border-radius:10px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 490px;
+    display: flex; 
+}
+
+.slides input {
+    display: none;
+}
+
+ .slide {
+    width: 20%;
+    transition: 2s;
+ }
+
+ .slide img{
+    width: 800px;
+    height: 500px;
+ }
+
+ .navigation-manual {
+    position: absolute;
+    width: 800px;
+    margin-top: 460px;
+    display: flex;
+    justify-content: center;
+
+ }
+
+ .manual-btn {
+    border: 2px solid #6b4f3b;
+    padding: 5px;
+    border-radius : 10px;
+    cursor: pointer;
+    transition: 1s;
+
+ }
+
+ .manual-btn:not(:last-child) {
+    margin-right: 40px;
+ }
+
+.manual-btn:hover {
+        background-color: #6b4f3b;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+#radio4:checked ~ .first {
+    margin-left: -60%;
+} 
+
+.navigation-auto {
+     position: absolute;
+     display : flex;
+     width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+}
+
+.navigation-auto div{
+    border: 2px solid #6b4f3b;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background-color: #6b4f3b;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background-color: #6b4f3b;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background-color: #6b4f3b;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+    background-color: #6b4f3b;
+}
+
+
+.gallery_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 60px;
+  background-color: #d4c3a4d8;
+}
+.gallery_my_job {
+    font-size: 1.5rem;
+    margin-top: 20%;
+
+    line-height: 2;
+}
+
+.informacion_contacto {
+    font-family: 'Inter';font-size: 22px;
+    padding-top: 30px;
+    padding-bottom: 80px;
+    margin-top: 10px;
+    margin-left: 20px;
+    line-height: 1.8;
+}
+.informacion_contacto ul {
+    list-style-type: none;
+    
+}
+
+
+@media (max-width: 768px) {
+  .hero_inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero_logo img {
+    margin: 0 auto;
+    transform: none !important;
+  }
+
+  .divider {
+    width: 80px;
+    height: 5px;
+    margin: 20px auto;
+  }
+
+  .hero_content {
+    padding: 0 20px;
+    font-size: 1rem;
+  }
+
+  /* Ajustes cuando está activo (desde JS) */
+  .hero_inner.mobile-active .hero_content,
+  .hero_inner.mobile-active .divider {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero_content,
+  .divider {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+textarea#subject {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  overflow: hidden;
+  resize: none;
+  min-height: 38px;
+  line-height: 1.4;
+}

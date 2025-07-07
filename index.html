@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristobal Carrasco</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero_inner">
+            <div class="hero_logo">
+                <img src="/resources/logo.png" alt="Logo de Cristobal Carrasco">
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="hero_content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit 
+                esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+                sint occaecat cupidatat non proident, sunt in culpa qui 
+                officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <div class="hero_arrow">
+            <p>▼</p>
+        </div>
+    </section>
+    
+    <div class="gallery_header" id="galleryHeader">
+        <div class="gallery_logo">
+            <img src="/resources/logo.png" alt="Logo pequeño" />
+        </div>
+        <div class="gallery_divider"></div>
+    </div>
+
+    <!-- GALERÍA -->
+    <section class="gallery_box">
+
+        <div class="gallery_my_job">
+            <h3>Nuestras especialidades</h3>
+
+            <ul>
+                <li>Diseño conceptual de producto</li>
+                <li>Modelado 3D y renderizado</li>
+                <li>Diseños personalizados</li>
+                <li>Lorem ipsum dolor sit amet</li>
+                <li>Consectetur adipiscing elit</li>
+            </ul>
+        </div>
+
+
+    <div class="gallery_content">
+
+        <div class="slider">
+            <div class="slides">
+
+                <!-- botones -->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <input type="radio" name="radio-btn" id="radio5">
+
+                <!-- botones -->
+                <!-- slide images start-->
+                 <div class="slide first">
+                    <img src="/resources/test_image.png" alt="Imagen 1"> 
+                </div>
+                <div class="slide">
+                    <img src="/resources/imagen2.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="/resources/imagen3.jpg" alt="Imagen 3">
+                </div>
+                <div class="slide">
+                    <img src="/resources/imagen4.jpg" alt="Imagen 4">
+                </div>
+
+                <!-- slide images end-->
+
+                <!--automatic navigation start-->
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div> 
+                <!--automatic navigation end-->
+                <!--manual navigation start-->
+                 <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                <!--manual navigation end-->
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <!-- Botón flotante de WhatsApp -->
+     <div class="whatsapp_box" id="whatsappBox">
+        <a href="javascript:void(0)" id="whatsappToggle">
+            <img src="/resources/whatsapp.png" alt="Icono de WhatsApp">
+            <span>Contáctanos</span>
+        </a>
+    </div>
+    
+    <!-- Formulario flotante oculto -->
+     <div class="whatsapp_form" id="whatsappForm">
+        <form id="whatsappContactForm">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="subject">Asunto:</label>
+            <textarea id="subject" name="subject" rows="1" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div class="informacion_contacto">
+        <h3>Información de contacto</h3>
+        <ul>
+            <li>Teléfono: +56 9 5752 2676</li>
+            <li>Email: <a href="mailto:cristobal.carrasco12@gmail.com">cristobal.carrasco12@gmail.com</a></li>
+        </ul>
+    </div>
+
+    <!-- SCRIPT -->
+<script>
+  const hero = document.querySelector('.hero');
+  const gallery = document.querySelector('.gallery_box');
+
+  // Clic en zona inferior del HERO para bajar
+  hero.addEventListener('click', (e) => {
+    const y = e.clientY;
+    const windowHeight = window.innerHeight;
+    if (y > windowHeight * 0.7) {
+      gallery.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // Mostrar/ocultar cabecera al entrar en galería
+  const galleryHeader = document.getElementById('galleryHeader');
+  const galleryBox = document.querySelector('.gallery_box');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        galleryHeader.classList.add('visible');
+        galleryHeader.classList.remove('retract');
+      } else {
+        galleryHeader.classList.remove('visible');
+        galleryHeader.classList.add('retract');
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.2
+  });
+
+  observer.observe(galleryBox);
+
+  // WhatsApp toggle y animación
+  const toggleBtn = document.getElementById('whatsappToggle');
+  const formBox = document.getElementById('whatsappForm');
+
+  toggleBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Animación rebote
+    this.classList.remove('animate');
+    void this.offsetWidth;
+    this.classList.add('animate');
+
+    // Mostrar u ocultar formulario
+    if (formBox.classList.contains('active')) {
+      formBox.classList.remove('active');
+      setTimeout(() => {
+        formBox.style.display = 'none';
+      }, 400); // Espera transición CSS
+    } else {
+      formBox.style.display = 'flex';
+      requestAnimationFrame(() => {
+        formBox.classList.add('active');
+      });
+    }
+  });
+
+  // WhatsApp box aparece solo en galería
+  const whatsappBox = document.getElementById('whatsappBox');
+
+  const observerWhatsapp = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        whatsappBox.classList.remove('hidden');
+      } else {
+        whatsappBox.classList.add('hidden');
+
+        // Cierra también el formulario si está abierto
+        if (formBox.classList.contains('active')) {
+          formBox.classList.remove('active');
+          setTimeout(() => {
+            formBox.style.display = 'none';
+          }, 400); 
+        }
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  observerWhatsapp.observe(galleryBox);
+
+
+
+   const subjectTextarea = document.getElementById('subject');
+
+  subjectTextarea.addEventListener('input', function () {
+    this.style.height = 'auto'; // Reinicia la altura
+    this.style.height = (this.scrollHeight) + 'px'; // Ajusta al contenido
+  });
+  
+  
+  const contactForm = document.getElementById('whatsappContactForm');
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    const mensaje = `Hola, soy ${name}. Mi correo es ${email}. Me gustaría saber sobre: ${subject}.`;
+    const url = `https://wa.me/56957522676?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank'); // Abre WhatsApp en una nueva pestaña
+  });
+
+    // Slider automático
+    var counter = 1;
+    setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if (counter > 4) {
+            counter = 1;
+        }
+    }, 5000); // Cambia cada 5 segundos
+
+
+
+    // Detecta si es móvil
+const isMobile = window.innerWidth < 768;
+
+// Si es móvil, activa animación después de 4 segundos
+if (isMobile) {
+  setTimeout(() => {
+    const heroInner = document.querySelector('.hero_inner');
+    heroInner.classList.add('mobile-active');
+  }, 4000);
+}
+
+
+</script>
+
+
+</body>
+</html>
