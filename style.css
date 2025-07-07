@@ -385,17 +385,29 @@ body {
 }
 
 .informacion_contacto {
-    font-family: 'Inter';font-size: 22px;
+    font-family: 'Inter';
+    font-size: 15px;
     padding-top: 30px;
     padding-bottom: 80px;
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 5px;
+    margin-left: 100px;
     line-height: 1.8;
 }
 .informacion_contacto ul {
     list-style-type: none;
     
 }
+
+.contacto_logo {
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.contacto_logo img {
+  width: 150px;
+  height: auto;
+}
+
 
 
 @media (max-width: 768px) {
@@ -446,3 +458,4 @@ textarea#subject {
   min-height: 38px;
   line-height: 1.4;
 }
+
