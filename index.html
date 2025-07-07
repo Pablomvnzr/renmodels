@@ -144,6 +144,21 @@
 
     <!-- SCRIPT -->
 <script>
+
+    window.addEventListener('load', () => {
+  const rect = galleryBox.getBoundingClientRect();
+  const isGalleryVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+  if (isGalleryVisible) {
+    galleryHeader.classList.add('visible');
+    galleryHeader.classList.remove('retract');
+  } else {
+    galleryHeader.classList.remove('visible');
+    galleryHeader.classList.add('retract');
+  }
+});
+
+    
   const hero = document.querySelector('.hero');
   const gallery = document.querySelector('.gallery_box');
 
